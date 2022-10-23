@@ -26,7 +26,7 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
-      <li>Item 5</li>
+      <!-- <li>Item 5</li> -->
     </ul>
    </div>
   </div>
@@ -82,14 +82,55 @@
   //    items[i].style.fontWeight="bold";
   //   items[i].style.color="blue";
   //  }
-   var items= document .getElementsByTagName('li');
-   console.log(items);
-   for(var i=0;i<items.length;i++){
-     items[i].style.fontWeight="bold";
-    items[i].style.color="aqua";
-   }
-   items[4].style.color="purple";
-   items[4].style.background="darkgrey"
+  //  var items= document .getElementsByTagName('li');
+  //  console.log(items);
+  //  for(var i=0;i<items.length;i++){
+  //    items[i].style.fontWeight="bold";
+  //   items[i].style.color="aqua";
+  //  }
+  //  items[4].style.color="purple";
+  //  items[4].style.background="darkgrey"
+
+
+  // queryselector
+//   let q=document.querySelector('input')
+// q.value="hello welcome";
+// q.style.color="red";
+// q.style.backgroundColor="darkgreen";
+
+// var r=document.querySelector('input[type="submit"]');
+// r.value="Done"
+// r.style.backgroundColor="darkblue";
+
+// var s=document.querySelector('.list-group-item');
+// s.style.backgroundColor="darkblue"
+
+
+// var l=document.querySelector('.list-group-item:last-child');
+// l.style.backgroundColor="darkblue"
+
+
+// var f=document.querySelector('.list-group-item:nth-child(3)');
+// f.style.color="darkblue"
+// f.style.fontWeight="bold"
+
+
+// queryselectorall
+var a=document.querySelectorAll('.title');
+console.log(a);
+a[0].textContent="hiiiiii";
+
+a[1].textContent="byyyy"
+
+
+var n=document.querySelector('.title');
+console.log(n);
+
+n.style.color="darkblue"
+
+
+
+
 
 
 
