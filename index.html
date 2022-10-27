@@ -24,10 +24,7 @@
     <ul id="items" class="list-group">
       <li class="list-group-item">Item 1</li>
       <li class="list-group-item">Item 2</li>
-      <li class="list-group-item">Item 3</li>
-      <li class="list-group-item">Item 4</li>
-      <!-- <li>Item 5</li> -->
-    </ul>
+      <li class="list-group-item">Item 3</li><li class="list-group-item">Item 4</li></ul>
    </div>
   </div>
   <footer id="ftr "> 
@@ -116,17 +113,85 @@
 
 
 // queryselectorall
-var a=document.querySelectorAll('.title');
-console.log(a);
-a[0].textContent="hiiiiii";
+// var a=document.querySelectorAll('.title');
+// console.log(a);
+// a[0].textContent="hiiiiii";
 
-a[1].textContent="byyyy"
+// a[1].textContent="byyyy"
 
 
-var n=document.querySelector('.title');
-console.log(n);
+// var n=document.querySelector('.title');
+// console.log(n);
 
-n.style.color="darkblue"
+// n.style.color="darkblue"
+
+ var a=document.querySelector('.list-group-item');
+// console.log(a.parentElement)
+console.log(a.parentNode)
+
+
+var a=document.querySelector('.list-group');
+console.log(a.lastChild)
+console.log(a.firstChild);
+// console.log(a.children);
+console.log(a.firstElementChild)
+console.log(a.lastElementChid)
+
+var n=document.querySelector('.list-group-item')
+console.log(n.nextSibling)
+
+console.log(n.nextElementSibling)
+console.log(n.previousSibling)
+console.log(n.previousElementSibling)
+
+
+// create and append child
+var list=document.querySelector('#items')
+
+var l=document.createElement('li');
+// l.className='new-list';
+l.innerHTML='list 6';
+l.className='list-group-item'
+l.style.color='red'
+
+console.log(l);
+ list.appendChild(l);
+
+
+//  create element
+ var newe=document.createElement('ol')
+ newe.className='orderdlist';
+//  set attribute
+ newe.setAttribute('name','setAttribute value');
+
+ console.log(newe);
+ var newl=document.createElement('li')
+ newl.className='new-list'
+ newl.textContent='list01'
+ newe.appendChild(newl)
+
+ var m=document.querySelector('#main')
+ m.appendChild(newe);
+
+var r= document.createTextNode('hello world')
+var f=document.querySelector('.orderdlist');
+f.appendChild(r)
+// console.log(r)
+
+
+ var op=document.querySelector('.orderdlist')
+ console.log(op.textContent)
+
+
+ var nn=document.querySelector('#header-title')
+  nn.before(r);
+//  nn.after(r)
+//  r.before(nn)
+//  r.after(nn)
+//  get Attribute
+console.log(newe.getAttribute('name'));
+
+
 
 
 
