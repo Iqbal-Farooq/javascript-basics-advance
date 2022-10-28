@@ -30,21 +30,35 @@
     </form>
 </div>
 <script>
+    // var form=document.getElementById('formm');
+    // form.addEventListener('submit',AddData);
+    // function AddData(e){
+    //     e.preventDefault();
+    //         if(confirm('ARE YOU SURE TO BOOK APPOINTMENT')){
+
+            
+    //     var name=document.getElementById('N').value;
+    //     var Email=document.getElementById('E').value;
+    //     var PHONE=document.getElementById('C').value;
+    //     localStorage.setItem('name',name);
+    //     localStorage.setItem('Email',Email);
+    //     localStorage.setItem('Contact-Number',PHONE);
+    //         }
+
+    // }
     var form=document.getElementById('formm');
     form.addEventListener('submit',AddData);
     function AddData(e){
         e.preventDefault();
             if(confirm('ARE YOU SURE TO BOOK APPOINTMENT')){
 
-            
-        var name=document.getElementById('N').value;
-        var Email=document.getElementById('E').value;
-        var PHONE=document.getElementById('C').value;
-        localStorage.setItem('name',name);
-        localStorage.setItem('Email',Email);
-        localStorage.setItem('Contact-Number',PHONE);
-            }
-
+    var obj={
+        name:document.getElementById('N').value,
+        email:document.getElementById('E').value,
+    }
+    var obj1=JSON.stringify(obj);
+    localStorage.setItem("items",obj1)
+}
     }
 
     
