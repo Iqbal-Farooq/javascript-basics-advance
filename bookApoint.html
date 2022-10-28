@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    <header style="background-color:bisque;text-align: center;">
+        <h2> Booking Appointment System</h2>
+
+    </header>
+   
+<div id="divs" >
+    <form  id="formm" style="background-color:burlywood;text-align:center;padding:auto;">
+        <fieldset>
+        <legend style="font-weight:bold;color: darkgreen;">FILL THIS FORM : </legend>
+            
+<br>
+        <label for="N">NAME :</label><br><br>
+        <input type="text" id="N" name="name" placeholder="ENTER YOUR NAME" required><br><br>
+        <label for="E">EMAIL :</label><br><br>
+        <input type="text" id="E" name="Email" placeholder="ENTER YOUR EMAIL" required><br><br>
+        <label for="C">PHONE NUMBER :</label><br><br>
+        <input type="number" name="Contact-Number" id="C" placeholder="ENTER YOUR PHONE NUMBER"><br><br><br>
+        <input type="submit" id="s" ><br>
+    
+</fieldset>
+    </form>
+</div>
+<script>
+    var form=document.getElementById('formm');
+    form.addEventListener('submit',AddData);
+    function AddData(e){
+        e.preventDefault();
+            if(confirm('ARE YOU SURE TO BOOK APPOINTMENT')){
+
+            
+        var name=document.getElementById('N').value;
+        var Email=document.getElementById('E').value;
+        var PHONE=document.getElementById('C').value;
+        localStorage.setItem('name',name);
+        localStorage.setItem('Email',Email);
+        localStorage.setItem('Contact-Number',PHONE);
+            }
+
+    }
+
+    
+</script>
+    
+</body>
+</html>
