@@ -28,6 +28,9 @@
     
 </fieldset>
     </form>
+    <ul id="ul">
+
+    </ul>
 </div>
 <script>
     // var form=document.getElementById('formm');
@@ -55,11 +58,35 @@
     var obj={
         name:document.getElementById('N').value,
         email:document.getElementById('E').value,
+        phone:document.getElementById('C').value,
     }
+    // get keys
+   console.log(Object.keys(obj));
+//    get values
+   console.log(Object.values(obj));
+//    iterate 
+   var keyA=Object.keys(obj)
+   keyA.forEach(element => {
+    console.log(obj[element]);
+    
+   });
+
     var obj1=JSON.stringify(obj);
-    localStorage.setItem("items",obj1)
+    // localStorage.setItem("items",obj1)
+    localStorage.setItem(obj.phone,JSON.stringify(obj));
+    DataOnScr(obj);
 }
     }
+    function DataOnScr(userData){
+        var getParent=document.getElementById('ul');
+        var CreateChild=`<li> ${userData.name} -${userData.email} - ${userData.phone}</li>`
+      getParent.innerHTML+=CreateChild;
+// parentNode.innerHTML=parentNode.innerHTML+child;
+    }
+
+   
+
+    
 
     
 </script>
