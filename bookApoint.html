@@ -77,19 +77,55 @@
     DataOnScr(obj);
 }
     }
+    window.addEventListener("DOMContentLoaded",ToDisplayUsersData); 
+    function ToDisplayUsersData(e) {
+                const localStorageObj = localStorage;
+                const localstoragekeys  = Object.keys(localStorageObj)
+
+                for(var i =0; i< localstoragekeys.length; i++){
+                    const key = localstoragekeys[i]
+                    const userDetailsString = localStorageObj[key];
+                    const userDetailsObj = JSON.parse(userDetailsString);
+                    DataOnScr(userDetailsObj)
+                }
+            }
     function DataOnScr(userData){
+        if(localStorage.getItem(userData.phone)!==null){
+            UserScrnRemove(userData.phone);
+        }
         var getParent=document.getElementById('ul');
-        var CreateChild=`<li> ${userData.name} -${userData.email} - ${userData.phone}</li>`
+        var CreateChild=`<li id=${userData.phone}> ${userData.name} ${userData.email} ${userData.phone}
+            <button onclick=deleteUser('${userData.phone}')> Delete User </button>
+             <button onclick=editUserDetails('${userData.email}','${userData.name}','${userData.phone}')>Edit User </button>
+            </li>`
       getParent.innerHTML+=CreateChild;
 // parentNode.innerHTML=parentNode.innerHTML+child;
     }
+    function UserScrnRemove(data){
+        var parentNode=document.getElementById('ul');
 
-   
 
-    
+        var childToBeDel=document.getElementById(data);
+        if(childToBeDel){
+            parentNode.removeChild(childToBeDel);
+        }
+    }
+    function deleteUser(phone){
+                console.log(phone)
+                localStorage.removeItem(phone);
+                UserScrnRemove(phone);
 
-    
+            }
+            function editUserDetails(email, name, phone){
+
+document.getElementById('E').value = email;
+document.getElementById('N').value = name;
+document.getElementById('C').value =phone;
+
+ deleteUser(phone)
+}
+
 </script>
-    
+
 </body>
 </html>
