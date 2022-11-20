@@ -102,6 +102,14 @@ Delete().then(()=>{
     }).catch(err=>console.log(err))
 }).catch(err=>console.log(err))
 
+// as per youtuber
+
+let promise1=Promise.resolve('hello world');
+let promise2=89;
+let promise3=new Promise((resolve,reject)=>setTimeout(resolve,2000,'goodbye')
+)
+Promise.all([promise1,promise2,promise3]).then(values=>console.log(values));
+
 </script>
 
     
