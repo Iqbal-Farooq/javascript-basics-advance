@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const lists=[{title:"List 1", data:"Apple",created:new Date().getTime()},
+{title:'List 2',data:'orange',created:new Date().getTime()}];
+
+let intervalid=0;
+
+function GetList(){
+  
+ 
+   
+    intervalid=setInterval(()=>{
+       
+            clearInterval(intervalid);
+         
+
+        let items='';
+        for(let i=0;i<lists.length;i++){
+            console.log(lists[i].title +" "+lists[i].data);
+            // console.log(lists[i].data);
+            items+=`<li> ${lists[i].title +" "+lists[i].data} lastupdated  ${(new Date().getTime()-lists[i].created)/1000} Sec ago   Last Activity: ${lists.lastActivityTime}</li>`
+        }
+        document.body.innerHTML=items;
+     
+    },1000);
+    console.log("interval id "+intervalid);
+   
+}
+
+
+
+function createList5(anyData){
+    return new Promise((resolve,reject)=>{
+
+        setTimeout(()=>{
+            
+            updateLstActivityTime();
+            
+            // createList4({title:'List 3',data:'Banana'},GetList);
+            const error=false;
+            if(!error){
+                lists.push({...anyData,created:new Date().getTime()});
+                resolve()
+            }
+            else{
+                reject('Sorry cant add Data')
+            }
+        },1000);
+  
+       })
+   
+
+ }
+
+ createList5({title:'List 03',data:'APPRICOT'}).then(GetList)
+ .catch(err=>console.log(err));
+//  createList5({title:'List 04',data:'BADAM'}).then(()=>{
+//     GetList();
+//  })
+//  .catch(err=>console.log(err));
+
+ 
+function Delete(){
+    return new Promise(function(resolve,reject){
+        setTimeout(()=>{
+            if(lists.length>0){
+                
+                resolve(lists.pop());
+            }else {
+                reject("ARRAY IS EMPTY")
+
+            }
+                
+        },2000)
+    })
+
+}
+GetList()
+
+Delete().then(()=>{
+    GetList()
+    Delete().then(()=>{
+        GetList()
+        Delete().then(()=>{
+            GetList()
+       
+        Delete().then(()=>{
+            GetList()
+        }).catch(err=>console.log(err))
+
+    }).catch(err=>console.log(err))
+
+    }).catch(err=>console.log(err))
+}).catch(err=>console.log(err))
+
+function updateLstActivityTime(){
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            // lastActivityTime= new Date().getTime()
+            lastActivityTime= lists.forEach((list) => {list.lastActivityTime = new Date().getTime()});
+            resolve();
+        },1000);
+    });
+}
+
+Promise.all([createList5({title : 'Post 9',data: 'This is post Three.'}),updateLstActivityTime()])
+    .then(()=>GetList())
+    .then(() => {
+        Delete().then(() => {
+            console.log(lists);
+        })
+    });
+
+
+    </script>
+    
+</body>
+</html>
