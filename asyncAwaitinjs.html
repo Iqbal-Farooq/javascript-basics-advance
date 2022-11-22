@@ -148,9 +148,7 @@
 
     // section 4: Async await
 
-
-
-    
+          
 const lists=[{title:"List 1", data:"Apple",created:new Date().getTime()},
 {title:'List 2',data:'orange',created:new Date().getTime()}];
 
@@ -169,7 +167,7 @@ function GetList(){
         for(let i=0;i<lists.length;i++){
             console.log(lists[i].title +" "+lists[i].data);
             // console.log(lists[i].data);
-            items+=`<li> ${lists[i].title +" "+lists[i].data} lastupdated  ${(new Date().getTime()-lists[i].created)/1000} Sec ago }</li>`
+            items+=`<li> ${lists[i].title +" "+lists[i].data} lastupdated  ${(new Date().getTime()-lists[i].created)/1000} Sec ago .</li>`
         }
         document.body.innerHTML=items;
      
@@ -180,10 +178,10 @@ function GetList(){
 
 const res=async()=>{
   
-   let res =await  createList5 ({title:'List 03',data:'APPRICOT'}).then(GetList);
+   let res1 =await  createList5 ({title:'List 03',data:'APPRICOT'}).then(GetList);
   
 
-   console.log(res);
+   console.log(res1);
    let newres=await Delete().then(()=>{
     GetList()
     Delete().then(()=>{
@@ -244,6 +242,48 @@ function Delete(){
 
 GetList()
     
+
+// trip to manali
+
+function bookaticket(){
+  return new Promise((res,rej)=>{
+    setTimeout(()=>{
+ res("ticket booked");
+   
+  },2000)
+  })
+ 
+}
+
+function bookacab(){
+  return new Promise((res,rej)=>{
+  setTimeout(()=>{
+   res("cab  booked");
+   
+  },1000)
+})
+}
+function bookHotel(){
+  return new Promise((res,rej)=>{
+
+  setTimeout(()=>{
+    res("Hotel  booked");
+  },1000)
+})
+}
+
+
+async function fun1(){
+  let res1=await bookaticket();
+console.log(res1)
+  let res2=await bookacab();
+  console.log(res2)
+
+  let res3=await bookHotel();
+  console.log(res3)
+}
+fun1()
+
 
 
 
