@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+  
+//   section 1:
+      
+    console.log("person 1 : show ticket")
+    console.log("person 2 : show ticket");
+    
+      const promiseBringTickt=new Promise((resolve,reject) =>{
+        setTimeout(()=>{
+            resolve(' got ticket');
+        },1000)
+      } );
+
+     const getpopcorn= promiseBringTickt.then((t)=>{
+        console.log(`Wife: I have the tickets`);
+        console.log(`Husband: we sholud go`);
+        console.log(`Wife: I am hungry`);
+        return new Promise((resolve,reject)=>resolve(`${t} popcorn`));
+      })
+      const Butterinpop= getpopcorn.then((t)=>{
+        console.log(`Husband: i got some popcorn`);
+        console.log(`Husband: we sholud go in`);
+        console.log(`Wife: I need some butter on my pop corn`);
+        return new Promise((resolve,reject)=>resolve(`${t} butter`));
+      });
+      const GetcoldDrink=Butterinpop.then((t)=>{
+      
+        console.log(`Husband: i got cold drink`);
+        console.log(`Husband: do you wana Drink`);
+       
+        console.log(`Wife thanks i Really need it`);
+        return new Promise((resolve,reject)=>resolve(`${t} ANd Cold-Drink`))
+
+      });
+      GetcoldDrink.then((t)=>console.log(t))
+
+    
+    console.log("person 4 : show ticket")
+    console.log("person 5 : show ticket")
+
+
+// SEction 2: using async await
+    console.log("person 1 : show ticket")
+    console.log("person 2 : show ticket");
+    const preMo=async()=>{
+         
+      const promiseBringTickt=new Promise((resolve,reject) =>{
+        setTimeout(()=>{
+            resolve(' got ticket');
+        },1000)
+      } );
+
+      let ticket=await promiseBringTickt;
+      console.log(`Wife: I have the tickets`);
+        console.log(`Husband: we sholud go`);
+        console.log(`Wife: I am hungry`);
+     
+
+       
+
+    const getpopcorn=new Promise((resolve,reject)=>resolve('popcorn'));
+
+       let pop=await getpopcorn;
+       console.log(`Husband: i got some popcorn`);
+        console.log(`Husband: we sholud go in`);
+        console.log(`Wife: I need some butter on my pop corn`);
+
+
+        const addbutter=new Promise((resolve,reject)=>resolve('got some butter'));
+
+        let butter= await addbutter;
+        console.log(`Husband: i got some butter`);
+        console.log(`Husband: anyting ekse`);
+        console.log(`Wife: lets go we are getting late`);
+        console.log(`Husband: thanks for reminder`);
+
+
+         const GetColdDrinks=new Promise((resolve , reject)=>resolve('Got  cold Drinkes'));
+        let coldDrink=await GetColdDrinks;
+        console.log(`Husband: i got cold drink`);
+        console.log(`Husband: do you wana Drink`);
+       
+        console.log(`Wife: thanks  i need it a lot`);
+  
+
+
+        
+        return ticket
+    }
+    preMo().then((message)=>console.log(message));
+
+     
+    console.log("person 4 : show ticket")
+    console.log("person 5 : show ticket")
+
+    
+//Sectuon3 : async await
+
+
+    console.log("person 1 : show ticket")
+    console.log("person 2 : show ticket");
+    const preMo=async()=>{
+         
+      const promiseBringTickt=new Promise((resolve,reject) =>{
+        setTimeout(()=>{
+            resolve(' person 3: got ticket');
+        },1000)
+      } );
+
+    
+    
+
+       
+   
+    const getpopcorn=new Promise((resolve,reject)=>resolve('popcorn'));
+
+      
+
+        const addbutter=new Promise((resolve,reject)=>resolve('got some butter'));
+
+       
+
+
+         const GetColdDrinks=new Promise((resolve , reject)=>resolve('Got  cold Drinkes'));
+       
+
+
+         let ticket=await promiseBringTickt;
+         let res=await Promise.all([getpopcorn,GetColdDrinks,addbutter,ticket]);
+         
+        return ticket
+    }
+    preMo().then((message)=>console.log(message));
+     
+    console.log("person 4 : show ticket")
+    console.log("person 5 : show ticket")
+
+
+
+    // section 4: Async await
+
+
+
+    
+const lists=[{title:"List 1", data:"Apple",created:new Date().getTime()},
+{title:'List 2',data:'orange',created:new Date().getTime()}];
+
+let intervalid=0;
+
+function GetList(){
+  
+ 
+   
+    intervalid=setInterval(()=>{
+       
+            clearInterval(intervalid);
+         
+
+        let items='';
+        for(let i=0;i<lists.length;i++){
+            console.log(lists[i].title +" "+lists[i].data);
+            // console.log(lists[i].data);
+            items+=`<li> ${lists[i].title +" "+lists[i].data} lastupdated  ${(new Date().getTime()-lists[i].created)/1000} Sec ago }</li>`
+        }
+        document.body.innerHTML=items;
+     
+    },1000);
+    console.log("interval id "+intervalid);
+   
+}
+
+const res=async()=>{
+  
+   let res =await  createList5 ({title:'List 03',data:'APPRICOT'}).then(GetList);
+  
+
+   console.log(res);
+   let newres=await Delete().then(()=>{
+    GetList()
+    Delete().then(()=>{
+        GetList()
+        Delete().then(()=>{
+            GetList()
+   });
+}).catch(err=>console.log(err))
+
+}).catch(err=>console.log(err))
+
+
+
+}
+res()
+
+    
+function createList5(anyData){
+    return new Promise((resolve,reject)=>{
+
+        setTimeout(()=>{
+            
+      
+            
+            // createList4({title:'List 3',data:'Banana'},GetList);
+            const error=false;
+            if(!error){
+                lists.push({...anyData,created:new Date().getTime()});
+                resolve()
+            }
+            else{
+                reject('Sorry cant add Data')
+            }
+        },2000);
+  
+       })
+   
+
+ }
+
+ 
+function Delete(){
+    return new Promise(function(resolve,reject){
+        setTimeout(()=>{
+            if(lists.length>0){
+                
+                resolve(lists.pop());
+            }else {
+                reject("ARRAY IS EMPTY")
+
+            }
+                
+        },2000)
+    })
+
+}
+
+
+GetList()
+    
+
+
+
+
+    </script>
+    
+</body>
+</html>
