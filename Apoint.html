@@ -8,7 +8,7 @@
 </head>
 
 
-<body>
+<body style="background-color:rgb(96, 184, 14);">
 
     <form onsubmit="Save(event)">
         <label for="name"> NAME:</label><br>
@@ -43,7 +43,7 @@
                 phone
             
            }
-           axios.post('https://crudcrud.com/api/d133049c41854defb5aad30743bca09a/UserData',obj).then(msg=>(console.log(msg.data))).catch(err=>console.log(err));
+           axios.post('https://crudcrud.com/api/95e06e58380e448cb6b152a90d218084/UserData',obj).then(msg=>(console.log(msg.data))).catch(err=>console.log(err));
            
            
        
@@ -53,30 +53,61 @@
 
         // get users data back from server
 
-        window.addEventListener("DOMContentLoaded",reload);
-       
-        function reload(e){
-           
-            axios.get('https://crudcrud.com/api/d133049c41854defb5aad30743bca09a/UserData').then(res=>{ console.log(res.data)
+        window.addEventListener("DOMContentLoaded",()=>{
+            
+            axios.get('https://crudcrud.com/api/95e06e58380e448cb6b152a90d218084/UserData').then(res=>{ console.log(res.data)
                 for (var i=0;i<res.data.length;i++){
                 DataOnScr(res.data[i]);
             }
             }).catch(err=>console.log(err))
+
+        })
+       
+        
+           
          
            
-        }
+        
 
         // Show that data on screen with buttons
         function DataOnScr(userData){
      var getParent=document.getElementById('ul');
-        var CreateChild=`<li id=${userData.phone}> ${userData.name} ${userData.email} ${userData.phone}
-            <button onclick=deleteUser('${userData.phone}')> Delete User </button>
-             <button onclick=editUserDetails('${userData.email}','${userData.name}','${userData.phone}')>Edit User </button>
+        var CreateChild=`<li id=${userData._id}> ${userData.name} ${userData.email} ${userData.phone}
+            <button onclick=deleteUser('${userData._id}')> Delete User </button>
+             <button onclick=editUserDetails('${userData._id}','${userData.name}','${userData.phone}')>Edit User </button>
             </li>`
       getParent.innerHTML+=CreateChild;
 
     }
-      
+
+
+    // deleteuser from DAta BAse
+
+    function deleteUser(userDataId)
+    {
+        axios.delete(`https://crudcrud.com/api/95e06e58380e448cb6b152a90d218084/UserData/${userDataId}`)
+        .then(()=>{
+            UserScrnRemove(userDataId)
+        })
+        .catch(err=>(console.log(err)))
+
+            }
+
+                // Remove user from screen After Deleting it fRom Data BAse
+            function UserScrnRemove(userDataId){
+        var parentNode=document.getElementById('ul');
+
+
+        var childToBeDel=document.getElementById(userDataId);
+        if(childToBeDel){
+            parentNode.removeChild(childToBeDel);
+        }
+    }
+  
+    
+ 
+
+            
     </script>
     
 </body>
