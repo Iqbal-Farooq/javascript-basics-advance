@@ -25,8 +25,12 @@
     
         <button>Submit</button>
     </form>
+    <ul id="ul"
+    ></ul>
 <script  src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+
+        // send users data to server where it will be stored
         function Save(event){
             event.preventDefault();
             let name=document.getElementById('name').value;
@@ -46,16 +50,32 @@
         
         }
 
+
+        // get users data back from server
+
         window.addEventListener("DOMContentLoaded",reload);
        
         function reload(e){
            
             axios.get('https://crudcrud.com/api/d133049c41854defb5aad30743bca09a/UserData').then(res=>{ console.log(res.data)
-               
+                for (var i=0;i<res.data.length;i++){
+                DataOnScr(res.data[i]);
+            }
             }).catch(err=>console.log(err))
-   
+         
            
         }
+
+        // Show that data on screen with buttons
+        function DataOnScr(userData){
+     var getParent=document.getElementById('ul');
+        var CreateChild=`<li id=${userData.phone}> ${userData.name} ${userData.email} ${userData.phone}
+            <button onclick=deleteUser('${userData.phone}')> Delete User </button>
+             <button onclick=editUserDetails('${userData.email}','${userData.name}','${userData.phone}')>Edit User </button>
+            </li>`
+      getParent.innerHTML+=CreateChild;
+
+    }
       
     </script>
     
