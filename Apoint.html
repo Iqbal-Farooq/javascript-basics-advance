@@ -43,17 +43,16 @@
            
            
        
-        //    .then(res=>console.log(res)),
-        //    .catch(err=>console.log(err))
+        
         }
 
         window.addEventListener("DOMContentLoaded",reload);
        
         function reload(e){
            
-            axios.get('https://crudcrud.com/api/d133049c41854defb5aad30743bca09a/UserData').then(res=>{ console.log(res);
+            axios.get('https://crudcrud.com/api/d133049c41854defb5aad30743bca09a/UserData').then(res=>{ console.log(res.data)
                
-            })
+            }).catch(err=>console.log(err))
    
            
         }
