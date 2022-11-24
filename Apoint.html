@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booking appointment</title>
+</head>
+
+
+<body>
+
+    <form onsubmit="Save(event)">
+        <label for="name"> NAME:</label><br>
+        <input type="text" id="name" ><br>
+        
+        <label for="email"> EMAIL:</label><br>
+        <input type="email" id="email"><br>
+        
+        <label for="phone"> PHONE:</label><br>
+        <input type="phone" id="phone"><br>
+        
+        <label for="ps"> PASSWORD:</label><br>
+        <input type="password" id="ps"><br>
+    
+        <button>Submit</button>
+    </form>
+<script  src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function Save(event){
+            event.preventDefault();
+            let name=document.getElementById('name').value;
+            let email=document.getElementById('email').value;
+            let phone=document.getElementById('phone').value;
+
+            const obj={
+                name,
+                email,
+                phone
+            
+           }
+           axios.post('https://crudcrud.com/api/d133049c41854defb5aad30743bca09a/UserData',obj).then(msg=>(console.log(msg.data))).catch(err=>console.log(err));
+           
+           
+       
+        //    .then(res=>console.log(res)),
+        //    .catch(err=>console.log(err))
+        }
+
+        window.addEventListener("DOMContentLoaded",reload);
+       
+        function reload(e){
+           
+            axios.get('https://crudcrud.com/api/d133049c41854defb5aad30743bca09a/UserData').then(res=>{ console.log(res);
+               
+            })
+   
+           
+        }
+      
+    </script>
+    
+</body>
+</html>
