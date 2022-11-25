@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,7 +44,8 @@
                 phone
             
            }
-           axios.post('https://crudcrud.com/api/95e06e58380e448cb6b152a90d218084/UserData',obj).then(msg=>(console.log(msg.data))).catch(err=>console.log(err));
+           axios.post('https://crudcrud.com/api/dc3845d9788e4cd2bacbc85849a78629/UserData',obj)
+           .then(msg=>(console.log(msg.data))).catch(err=>console.log(err));
            
            
        
@@ -55,7 +57,7 @@
 
         window.addEventListener("DOMContentLoaded",()=>{
             
-            axios.get('https://crudcrud.com/api/95e06e58380e448cb6b152a90d218084/UserData').then(res=>{ console.log(res.data)
+            axios.get('https://crudcrud.com/api/dc3845d9788e4cd2bacbc85849a78629/UserData').then(res=>{ console.log(res.data)
                 for (var i=0;i<res.data.length;i++){
                 DataOnScr(res.data[i]);
             }
@@ -74,18 +76,37 @@
      var getParent=document.getElementById('ul');
         var CreateChild=`<li id=${userData._id}> ${userData.name} ${userData.email} ${userData.phone}
             <button onclick=deleteUser('${userData._id}')> Delete User </button>
-             <button onclick=editUserDetails('${userData._id}','${userData.name}','${userData.phone}')>Edit User </button>
+                <button onclick=editUserDetails('${userData._id}','${userData.email}','${userData.name}','${userData.phone}')>Edit User </button>
             </li>`
       getParent.innerHTML+=CreateChild;
 
     }
+
+    // Edit user details by clicking the Edit button
+    function editUserDetails(userId,email, name, phone){
+
+let e=document.getElementById('email').value = email;
+let n=document.getElementById('name').value = name;
+let p=document.getElementById('phone').value =phone;
+axios.put(`https://crudcrud.com/api/dc3845d9788e4cd2bacbc85849a78629/UserData/${userId}`,{
+n,
+e,
+p
+}).then(()=>{
+    deleteUser(userId)
+}).catch(err=>console.log(err));
+
+ 
+}
+   
+
 
 
     // deleteuser from DAta BAse
 
     function deleteUser(userDataId)
     {
-        axios.delete(`https://crudcrud.com/api/95e06e58380e448cb6b152a90d218084/UserData/${userDataId}`)
+        axios.delete(`https://crudcrud.com/api/dc3845d9788e4cd2bacbc85849a78629/UserData/${userDataId}`)
         .then(()=>{
             UserScrnRemove(userDataId)
         })
