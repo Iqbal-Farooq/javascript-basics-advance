@@ -5,8 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense tracker</title>
+    <style>
+          label{
+            color:white;
+           font-weight: bold;
+          
+        }
+       select, input{
+            width: 40%;
+           height: 40px;
+           color:blue;
+        }
+        .div{
+            width: 100%;
+        text-align: center;
+        border: 2px solid white;
+      
+        }
+       #tt{
+            height: 30px;
+            width: 15%;
+        }
+        li{
+            text-align: center;
+            background-color: aliceblue;
+            padding: 3px;
+            margin: 4px 600px 4px 600px;
+            
+
+            color:darkblue;
+           
+        }
+       
+    </style>
 </head>
-<body style="background-color:tomato;">
+<h1 style="color:tomato;text-align: center;">PROJECT-DEMO</h1>
+<body style="background-color:darkgreen;">
+
+
+    <div class="div">
 <form id="frm">
     <label for="n">ExpenseAmount</label><br>
     <input type="number" name="num" id="n"><br>
@@ -16,17 +53,21 @@
     <option value="sports">sports </option>
     <option value="news">news</option>
     <option value="study">study </option>
+    <option value="trip"> trip </option>
     </select><br>
     <label for="">Chose Discription </label><br>
-    <input type="text" name="dis" id="d"><br>
+    <input type="text" name="dis" id="d"><br><br>
 
-    <input type="submit" name="type" id="t" value="ADDEXPENCE"><br>
+    <button   id="tt" value="ADDEXPENCE">ADDEXPENCE</button><br>
     </form>
 
+</div>
+<div>
     <ul id="u">
-       
 
     </ul>
+</div>
+   
     <script  src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script src="script.js"></script>
