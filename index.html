@@ -1,237 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  <title>Item Lister4</title>
-</head>
-<body id="b">
-  <header id="main-header" class="bg-success text-white p-4 mb-3">
-    <div class="container">
-      <h1 id="header-title">Item Lister <span style="display:none">123</span></h1>
-    </div>
-  </header>
-  <div class="container">
-   <div id="main" class="card card-body">
-    <h2 class="title">Add Items</h2>
-    <form class="form-inline mb-3" id="addform">
-      <input type="text" class="form-control mr-2" id="inputt">
-      <input type="submit" class="btn btn-dark" value="Submit">
-    </form>
-    <h2 class="title">Items</h2>
-    <ul id="items" class="list-group">
-      <li class="list-group-item">Item 1 <button class="btn btn-outline-danger btn-sm float-right delete">DEL</button></li>
-      <li class="list-group-item">Item 2 <button class="btn btn-danger btn-sm float-right ">DEL</button></li>
-      <li class="list-group-item">Item 3 <button class="btn btn-danger btn-sm float-right delete">DEL</button></li>
-      <li class="list-group-item">Item 4 <button class="btn btn-danger btn-sm float-right delete">DEL</button></li></ul>
-   </div>
-  </div>
-  <footer id="ftr "> 
-   
-  </footer>
-  <script>
-    // DOM practice
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-    // console.dir(document);
-    // console.log(document.domain)
-    // console.log(document.URL)
-   
-    // document.title="My first webpage"
-    // console.log(document.title);
-    // console.log(document.doctype);
-    // console.log(document.head)
-    // console.log(document.body)
-    // // console.log(document.all[10])
-    // console.log(document.forms)
-    // console.log(document.links)
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-    // console.log(document.images)
-    // console.log(document.getElementById('main-header'))
-//    var res=document.getElementById("header-title"); 
-//     res.textContent="NEW ITEMS"
-//     // res.innerText="GOOGLE";
-//     // res.innerHTML="<h3> hello</h3>"
-//     // res.style.color="pink";
-//     // res.style.backgroundColor="black";
-//     res.style.background=""
-    // res.style.borderBottom="solid 3pxs yellow";
-    // console.log(res);
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-  //   var res=document.getElementById("main-header");
-  //   res.style.borderBottom="solid 3px black"
-  //  var addit= document.querySelector('.title');
-  //  addit.innerHTML="<h1>Add items<h1>";
-  //  addit.style.color="green";
-
-  //  var bdy=document.getElementById('b');
-  //  bdy.style.backgroundColor="aqua"
-  
-  // var items= document .getElementsByClassName('list-group-item');
-  //  console.log(items);
-  //  items[1].style.color="yellow"
-  //  items[0].style.background="green"
-  //  items[2].style.fontWeight="bold"
-  //  items[2].style.background="green"
-  //  for(var i=0;i<items.length;i++){
-  //    items[i].style.fontWeight="bold";
-  //   items[i].style.color="blue";
-  //  }
-  //  var items= document .getElementsByTagName('li');
-  //  console.log(items);
-  //  for(var i=0;i<items.length;i++){
-  //    items[i].style.fontWeight="bold";
-  //   items[i].style.color="aqua";
-  //  }
-  //  items[4].style.color="purple";
-  //  items[4].style.background="darkgrey"
-
-
-  // queryselector
-//   let q=document.querySelector('input')
-// q.value="hello welcome";
-// q.style.color="red";
-// q.style.backgroundColor="darkgreen";
-
-// var r=document.querySelector('input[type="submit"]');
-// r.value="Done"
-// r.style.backgroundColor="darkblue";
-
-// var s=document.querySelector('.list-group-item');
-// s.style.backgroundColor="darkblue"
-
-
-// var l=document.querySelector('.list-group-item:last-child');
-// l.style.backgroundColor="darkblue"
-
-
-// var f=document.querySelector('.list-group-item:nth-child(3)');
-// f.style.color="darkblue"
-// f.style.fontWeight="bold"
-
-
-// queryselectorall
-// var a=document.querySelectorAll('.title');
-// console.log(a);
-// a[0].textContent="hiiiiii";
-
-// a[1].textContent="byyyy"
-
-
-// var n=document.querySelector('.title');
-// console.log(n);
-
-// n.style.color="darkblue"
-
-//  var a=document.querySelector('.list-group-item');
-// // console.log(a.parentElement)
-// console.log(a.parentNode)
-
-
-// var a=document.querySelector('.list-group');
-// console.log(a.lastChild)
-// console.log(a.firstChild);
-// // console.log(a.children);
-// console.log(a.firstElementChild)
-// console.log(a.lastElementChid)
-
-// var n=document.querySelector('.list-group-item')
-// console.log(n.nextSibling)
-
-// console.log(n.nextElementSibling)
-// console.log(n.previousSibling)
-// console.log(n.previousElementSibling)
-
-
-// // create and append child
-// var list=document.querySelector('#items')
-
-// var l=document.createElement('li');
-// // l.className='new-list';
-// l.innerHTML='list 6';
-// l.className='list-group-item'
-// l.style.color='red'
-
-// console.log(l);
-//  list.appendChild(l);
-
-
-// //  create element
-//  var newe=document.createElement('ol')
-//  newe.className='orderdlist';
-// //  set attribute
-//  newe.setAttribute('name','setAttribute value');
-
-//  console.log(newe);
-//  var newl=document.createElement('li')
-//  newl.className='new-list'
-//  newl.textContent='list01'
-//  newe.appendChild(newl)
-
-//  var m=document.querySelector('#main')
-//  m.appendChild(newe);
-
-// var r= document.createTextNode('hello world')
-// var f=document.querySelector('.orderdlist');
-// f.appendChild(r)
-// // console.log(r)
-
-
-//  var op=document.querySelector('.orderdlist')
-//  console.log(op.textContent)
-
-
-//  var nn=document.querySelector('#header-title')
-//   nn.before(r);
-// //  nn.after(r)
-// //  r.before(nn)
-// //  r.after(nn)
-// //  get Attribute
-// console.log(newe.getAttribute('name'));
-
-// add  and del using js
-var z=document.getElementById('addform')
-
- 
-var x=document.getElementById('items');
-
-// form submit event
-z.addEventListener('submit',addItem)
-function addItem(e){
-  e.preventDefault();
- 
-  var newitm=document.getElementById('inputt').value;
-  var l=document.createElement('li');
-  l.className='list-group-item';
-l.appendChild(document.createTextNode(newitm))
-
-
-var del=document.createElement('button');
-del.className="btn btn-danger btn-sm float-right delete";
-del.appendChild(document.createTextNode('DEL'));
-l.appendChild(del);
-x.appendChild(l)
-}
-
-x.addEventListener('click', DelItem);
-
-
-function DelItem(e){
-  if(e.target.classList.contains('delete')){
-    if(confirm('Are you Sure')){
-      var li=e.target.parentElement;
-      x.removeChild(li);
-    }
-  }
-  console.log('deleted')
-}
-
-
-
-
-
-  </script>
-
-</body>
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
 </html>
