@@ -1,0 +1,23 @@
+.ex{
+   
+    display: grid;
+    color: aliceblue;
+    grid: 70px 70px  /200px;
+    background-color: darkgreen;
+    border: 1px solid;
+    width: 200px;
+ 
+}
+.item{
+   
+    margin: 2px;
+    border: 3px solid black;
+    padding: 10px;
+}
+#i{
+    color:indigo;
+}
+#i2{
+    float:right;
+
+}
